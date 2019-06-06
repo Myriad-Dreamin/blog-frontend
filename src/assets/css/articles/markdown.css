@@ -1,0 +1,11 @@
+.markdown-body {
+    width: 100%;
+    margin-top: 45px;
+    padding: 0px;
+}
+
+@media (max-width: 767px) {
+    .markdown-body {
+        padding: 0px;
+    }
+}

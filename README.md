@@ -1,2 +1,3 @@
-# blog-frontend
-vue blog
+# myriadblog
+
+javascript blog

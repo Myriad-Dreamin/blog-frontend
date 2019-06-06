@@ -1,0 +1,39 @@
+* {font-size: 1em;}
+
+body {
+    background-color: #F5F5F5;
+    margin: 0px;
+}
+
+
+
+.clear {
+    clear: both;
+}
+
+.margin-left-5 {
+    margin-left: 5%;
+}
+
+.margin-right-5 {
+    margin-right: 5%;
+}
+
+.margin-left-12 {
+    margin-left: 12%;
+}
+
+.margin-left-15 {
+    margin-left: 15%;
+}
+.margin-right-15 {
+    margin-right: 15%;
+}
+
+.span-width20 {
+    width: 20%;
+}
+
+.span-width80 {
+    width: 80%;
+}
