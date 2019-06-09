@@ -33,12 +33,12 @@
 </template>
 
 <script>
-import MainNavibar from './components/MainNavibar.vue';
+import MainNavibar from '@/components/navibars/MainNavibar.vue';
 
 export default {
     name: 'Articles',
     mounted() {
-        this.axios.get('http://103.114.161.226:10777/api/article/' + this.$route.params.id.toString()).then(response =>  {
+        this.axios.get('https://myriaddreamin.com:10777/api/article/' + this.$route.params.id.toString()).then(response =>  {
             this.article = response.data;
             window.MathJax.Hub.Config({
                 showProcessingMessages: true,
@@ -87,9 +87,9 @@ export default {
 </script>
 
 <style module="header_box">
-    @import '../assets/css/articles/article_header_box.css';
+    @import '../../assets/css/articles/article_header_box.css';
 </style>
 
 <style scoped>
-    @import '../assets/css/articles/markdown.css';
+    @import '../../assets/css/articles/markdown.css';
 </style>

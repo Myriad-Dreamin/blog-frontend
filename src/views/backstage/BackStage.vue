@@ -24,12 +24,12 @@
 </template>
 
 <script>
-import MainNavibar from './components/MainNavibar.vue';
+import BackNaviBar from '@/components/navibars/BackNaviBar.vue';
 export default {
-    name: 'Articles',
+    name: 'BackStage',
     mounted() {
         
-        this.axios.get('http://103.114.161.226:10777/api/articles').then((response) =>  {
+        this.axios.get('https://myriaddreamin.com:10777/api/articles').then((response) =>  {
             this.articles = response.data;
         });
     },
@@ -53,12 +53,12 @@ export default {
         }
     },
     components: {
-        'navi-bar': MainNavibar
+        'navi-bar': BackNaviBar
     }
 };
 </script>
 
 <style lang="css" module>
-    @import '../assets/css/articles/article_index_body.css';
-    @import '../assets/css/articles/article_index_box.css';
+    @import '../../assets/css/articles/article_index_body.css';
+    @import '../../assets/css/articles/article_index_box.css';
 </style>
