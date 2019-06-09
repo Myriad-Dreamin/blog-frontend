@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import BackNaviBar from '@/components/navibars/BackNaviBar.vue';
+import BackNaviBar from '@/components/navibars/BackNavibar';
 export default {
     name: 'BackStage',
     mounted() {
