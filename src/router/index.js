@@ -7,7 +7,7 @@ import Main from '@/views/Main';
 import Articles from '@/views/article/Articles';
 import Article from '@/views/article/Article';
 
-import Musicals from '@/views/musical/Musicindex';
+import Musicals from '@/views/musical/MusicIndex';
 
 import Register from '@/views/auth/Register';
 import Login from '@/views/auth/Login';
