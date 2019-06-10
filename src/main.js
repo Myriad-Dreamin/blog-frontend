@@ -9,6 +9,9 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 import VeeValidate from 'vee-validate';
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
 import MydToken from './views/auth/Helper.vue';
 import store from './store/index.js';
 import router from './router';
@@ -25,6 +28,7 @@ axios.interceptors.request.use(function (config) {
 
 
 Vue.use(VueAxios, axios);
+Vue.use(ElementUI);
 Vue.use(VeeValidate);
 
 Vue.config.productionTip = false;

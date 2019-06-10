@@ -3,32 +3,34 @@
 <template>
     <div>
         <navi-bar></navi-bar>
-        <div class="margin-left-15 margin-right-15"> 
-        <div :class="header_box.header_box" >
-            <div class="clear" style="padding: 25px"></div>
-            <div :class="header_box.container">
-                <span :class="header_box.title">
-                    <a v-on:click="linkToArticle(article.id)">{{ article.title }}</a>
-                </span>
-                <span :class="header_box.tagbox">
-                    <a :class="header_box.category">Category: {{ article.category }}</a>
-                </span>
-            </div>
-            <div class="clear" style="padding: 12.5px"></div>
-            <div :class="header_box.container">
-                <span :class="header_box.tagbox">
-                    <a :class="header_box.timetag">Publish at: {{ article.published_at }} UTC+0</a>
-                </span>
-                <span :class="header_box.tagbox">
-                    <a :class="header_box.timetag">Update at: {{ article.updated_at }} UTC+0</a>
-                </span>
+        <div class="margin-left-10 margin-right-10" style="background-color: rgba(255, 255, 255, 0.6);">
+            <div class="margin-left-15 margin-right-15"> 
+                <div :class="header_box.header_box" >
+                    <div class="clear" style="padding: 25px"></div>
+                    <div :class="header_box.container">
+                        <span :class="header_box.title">
+                            <a v-on:click="linkToArticle(article.id)">{{ article.title }}</a>
+                        </span>
+                        <span :class="header_box.tagbox">
+                            <a :class="header_box.category">Category: {{ article.category }}</a>
+                        </span>
+                    </div>
+                    <div class="clear" style="padding: 12.5px"></div>
+                    <div :class="header_box.container">
+                        <span :class="header_box.tagbox">
+                            <a :class="header_box.timetag">Publish at: {{ article.published_at }} UTC+0</a>
+                        </span>
+                        <span :class="header_box.tagbox">
+                            <a :class="header_box.timetag">Update at: {{ article.updated_at }} UTC+0</a>
+                        </span>
+                    </div>
+                </div>
+                <div id="toRended" class="markdown-body" v-html="article.content" v-highlight>
+                    {{ article.content }}
+                </div>
             </div>
         </div>
-        <div id="toRended" class="markdown-body" v-html="article.content" v-highlight>
-            {{ article.content }}
-        </div>
-    </div>
-    <div style="height: 200px; width:100%;"></div>
+        <div style="height: 200px; width:100%;"></div>
     </div>
 </template>
 

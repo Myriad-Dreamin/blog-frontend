@@ -3,8 +3,12 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Main from '@/views/Main';
+
 import Articles from '@/views/article/Articles';
 import Article from '@/views/article/Article';
+
+import Musicals from '@/views/musical/Musicindex';
+
 import Register from '@/views/auth/Register';
 import Login from '@/views/auth/Login';
 import BackStage from '@/views/backstage/BackStage';
@@ -37,6 +41,14 @@ const router = new Router({
             path: '/articles/:id',
             name: 'Article',
             component: Article,
+            meta: {
+                requireAuth: false,
+            }
+        },
+        {
+            path: '/musical',
+            name: 'Musical',
+            component: Musicals,
             meta: {
                 requireAuth: false,
             }

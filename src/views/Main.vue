@@ -1,7 +1,7 @@
 /*jshint esversion: 6 */
 
 <template>
-    <div :class="[aaa.flexCenter, , aaa.positionRef, aaa.fullHeight, aaa.body_full]">
+    <div :class="[aaa.flexCenter, aaa.positionRef, aaa.fullHeight, aaa.body_full]">
 
         <div :class="aaa.content">
             <div :class="[aaa.title, aaa.mBMd]">
