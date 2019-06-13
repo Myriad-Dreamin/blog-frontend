@@ -110,7 +110,7 @@ export default {
     }
     .index .comment {
         font-size: 14px;
-        text-indent: 2em;
+        text-indent: 0em;
         height: 20px;
         overflow: hidden; 
     }
