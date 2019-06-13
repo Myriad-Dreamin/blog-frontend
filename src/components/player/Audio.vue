@@ -21,7 +21,7 @@
             @leave="leave"
         >
             <div ref="mcomment" class="comment" v-show="this.isShow">
-                {{this.recommand.comment}}
+                <p v-html="this.recommand.comment"></p>
             </div>
         </transition>
     </div>
