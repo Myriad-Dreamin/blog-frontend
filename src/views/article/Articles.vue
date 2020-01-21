@@ -3,19 +3,19 @@
 <template>
     <div>
         <navi-bar></navi-bar>
-        <div :class="$style.article_index_body"> 
+        <div class="article_index_body">
             <div style="height: 50px; width:100%;"></div>
-            <div :class="$style.index_box" v-for="article in articles" :key="article.id">
-                <div :class="$style.title">
+            <div class="index_box" v-for="article in articles" :key="article.id">
+                <div class="title">
                     <a v-on:click="linkToArticle(article.id)">{{ article.title }}</a>
                 </div>
-                <div :class="$style.tagbox">
-                    <a :class="$style.category">Category: {{ article.category }}</a>
+                <div class="tagbox">
+                    <a class="category">Category: {{ article.category }}</a>
                 </div>
-                <div :class="$style.tagbox">
-                    <a :class="$style.timetag">Publish at: {{ article.published_at }}</a>
+                <div class="tagbox">
+                    <a class="timetag">Publish at: {{ article.published_at }}</a>
                 </div>
-                <div :class="$style.intro">
+                <div class="intro">
                     <a>{{ article.intro }}</a>
                 </div>
             </div>
@@ -24,41 +24,45 @@
 </template>
 
 <script>
-import MainNavibar from '@/components/navibars/MainNavibar.vue';
-export default {
-    name: 'Articles',
-    mounted() {
-        
-        this.axios.get('https://myriaddreamin.com:10777/api/articles').then((response) =>  {
-            this.articles = response.data;
-        });
-    },
-    data () {
-        return {
-            msg: 'Welcome to Your Vue.js App',
-            articles: [
-                {
-                    'title': '',
-                    'id': 0,
-                    'category': '',
-                    'publishe_at': '',
-                    'intro': '',
+    import MainNavibar from '@/components/navibars/MainNavibar.vue';
+    import {getBackendPath} from "@/module/global";
+
+    export default {
+        name: 'Articles',
+        mounted() {
+
+            this.axios.get(getBackendPath() + '/v1/article-list?page=1&page_size=1000').then((response) => {
+                if (response.data.code === 0) {
+                    this.articles = response.data.articles.reverse();
+                } else {
+                    console.log(response.data);
                 }
-            ]
-        };
-    },
-    methods: {
-        linkToArticle(articleId) {
-            this.$router.push({name: 'Article', params: {id: articleId}});
+            });
+        },
+        data() {
+            return {
+                msg: 'List Articles',
+                articles: [
+                    {
+                        'title': '',
+                        'id': 0,
+                        'category': '',
+                        'published_at': '',
+                        'intro': '',
+                    }
+                ]
+            };
+        },
+        methods: {
+            linkToArticle(articleId) {
+                this.$router.push({name: 'Article', params: {id: articleId}});
+            }
+        },
+        components: {
+            'navi-bar': MainNavibar
         }
-    },
-    components: {
-        'navi-bar': MainNavibar
-    }
-};
+    };
 </script>
 
-<style lang="css" module>
-    @import '../../assets/css/articles/article_index_body.css';
-    @import '../../assets/css/articles/article_index_box.css';
-</style>
+<style scoped src="../../assets/css/articles/article_index_body.css"></style>
+<style scoped src="../../assets/css/articles/article_index_box.css"></style>

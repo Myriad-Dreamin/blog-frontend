@@ -23,7 +23,7 @@
 
         <div class="form-group row" :class="{'is-danger' : errors.has('password')}">
             <label for="password"
-            class="col-md-4 col-form-label text-md-right">Password</label>
+                   class="col-md-4 col-form-label text-md-right">Password</label>
             <div class="col-md-6">
                 <input
                     v-model="password"
@@ -38,10 +38,11 @@
             <div class="col-md-6">
                 <input
                     v-model="password_confirmation"
-                    id="password_confirmation" 
+                    id="password_confirmation"
                     v-validate="{ rules: {required: true, min: 6, confirmed: this.password_confirmation}}"
                     type="password" class="form-control" name="password_confirmation" required>
-                <span class="help-block" v-show="errors.has('password_confirmation')">{{errors.first('password_confirmation')}}</span>
+                <span class="help-block"
+                      v-show="errors.has('password_confirmation')">{{errors.first('password_confirmation')}}</span>
             </div>
         </div>
 
@@ -57,29 +58,29 @@
 
 
 <script>
-export default {
-    data() {
-        return {
-            name: '',
-            email: '',
-            password: '',
-            password_confirmation: ''
-        };
-    },
+    export default {
+        data() {
+            return {
+                name: '',
+                email: '',
+                password: '',
+                password_confirmation: ''
+            };
+        },
 
-    methods: {
-        register() {
-            // let formData = {
-            //     name: this.name,
-            //     email: this.email,
-            //     password: this.password
-            // };
+        methods: {
+            register() {
+                // let formData = {
+                //     name: this.name,
+                //     email: this.email,
+                //     password: this.password
+                // };
 
-            // this.axios.post('/api/register', formData).then(response => {
+                // this.axios.post('/api/register', formData).then(response => {
 
-            // });
+                // });
+            }
         }
-    }
-};
+    };
 </script>
 

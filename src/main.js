@@ -1,5 +1,4 @@
 /*jshint esversion: 6 */
-
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
@@ -12,19 +11,22 @@ import VeeValidate from 'vee-validate';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import MydToken from './views/auth/Helper.vue';
 import store from './store/index.js';
 import router from './router';
+import {tokenState} from "@/store/token/token";
+import {getBackendPath} from "@/module/global";
+import {authInterceptor} from "@/module/backend";
+
+axios.defaults.baseURL = getBackendPath();
 
 
-axios.interceptors.request.use(function (config) {
-    if (MydToken.getToken()) {
-        config.headers.Authorization = 'Bearer ' + MydToken.getToken();
-    }
-    return config;
-}, function(error) {
-    return Promise.reject(error);
-});
+window.MathJax = window.MathJax || {};
+window.MathJax.Hub = window.MathJax.Hub || {};
+window.MathJax.Hub.Config = window.MathJax.Hub.Config || function () {
+    console.log("plugin of MathJax unloaded, check it!");
+};
+
+axios.interceptors.request.use(authInterceptor.onFullFilled, authInterceptor.onRejected);
 
 
 Vue.use(VueAxios, axios);
@@ -33,16 +35,16 @@ Vue.use(VeeValidate);
 
 Vue.config.productionTip = false;
 
-Vue.directive('highlight',function () {
-    let blocks = document.querySelectorAll('pre code');
-    [].forEach.call(blocks, window.hljs.highlightBlock);
-});
+// Vue.directive('highlight', function () {
+//     let blocks = document.querySelectorAll('pre code');
+//     [].forEach.call(blocks, window.hljs.highlightBlock);
+// });
 
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
     router,
     store,
-    components: { App },
+    components: {App},
     template: '<App/>'
 });

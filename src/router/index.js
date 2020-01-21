@@ -15,7 +15,7 @@ import BackStage from '@/views/backstage/BackStage';
 
 
 import store from '@/store/index.js';
-import myd_token from '@/views/auth/Helper';
+import {tokenState} from "@/store/token/token";
 
 Vue.use(Router);
 
@@ -82,7 +82,7 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
     if (to.meta.requireAuth) {
-        if (store.state.authenticated || myd_token.getToken()) {
+        if (store.state.authenticated || tokenState.get()) {
             return next();
         } else {
             return next({'path': '/login'});
@@ -90,7 +90,6 @@ router.beforeEach((to, from, next) => {
     }
     return next();
 });
-
 
 
 export default router;

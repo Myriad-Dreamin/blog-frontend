@@ -25,6 +25,12 @@
     overflow: hidden;
 }
 
+.navigator li.right {
+    float: right;
+    position: relative;
+    overflow: hidden;
+}
+
 .navigator li a {
     display: block;
     color: #636b6f;

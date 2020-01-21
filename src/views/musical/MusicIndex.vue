@@ -22,7 +22,7 @@
                     </el-row>
                 </el-col>
             </el-row>
-            
+
             <el-row>
                 <div style="height: 200px; width:100%;"></div>
             </el-row>
@@ -40,11 +40,13 @@
 <script>
 import MainNavibar from '@/components/navibars/MainNavibar.vue';
 import AudioS from '@/components/player/Audio.vue';
+import {getBackendPath} from "@/module/global";
+
 
 export default {
     name: 'Articles',
     mounted() {
-        this.axios.get('https://myriaddreamin.com:10777/api/musical').then((response) =>  {
+        this.axios.get(getBackendPath() + '/v1/musical').then((response) =>  {
             this.recommend_list = response.data;
         });
     },

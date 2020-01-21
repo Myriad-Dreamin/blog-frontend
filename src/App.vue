@@ -7,9 +7,9 @@
 </template>
 
 <script>
-export default {
-    name: 'App'
-};
+    export default {
+        name: 'App'
+    };
 </script>
 
 <style>
@@ -17,9 +17,17 @@ export default {
 </style>
 
 <style scoped>
+
+    #app {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
     #app /deep/ .el-main {
         padding: 0;
     }
+
     #app /deep/ .el-header {
         padding: 0;
     }

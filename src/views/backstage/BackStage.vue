@@ -3,7 +3,7 @@
 <template>
     <div>
         <navi-bar></navi-bar>
-        <div :class="$style.article_index_body"> 
+        <div :class="$style.article_index_body">
             <div style="height: 50px; width:100%;"></div>
             <div :class="$style.index_box" v-for="article in articles" :key="article.id">
                 <div :class="$style.title">
@@ -25,11 +25,12 @@
 
 <script>
 import BackNaviBar from '@/components/navibars/BackNavibar';
+import {getBackendPath} from "@/module/global";
 export default {
     name: 'BackStage',
     mounted() {
-        
-        this.axios.get('https://myriaddreamin.com:10777/api/articles').then((response) =>  {
+
+        this.axios.get(getBackendPath() + '/v1/article-list?page=1&page_size=1000').then((response) =>  {
             this.articles = response.data;
         });
     },

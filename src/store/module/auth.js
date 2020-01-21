@@ -10,6 +10,7 @@ export default {
         name: null,
         email: null,
     },
+    //getters
     mutations: {
         [types.SET_AUTH_USER] (state, payload) {
             window.console.log('set auth user touched');

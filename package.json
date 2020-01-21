@@ -14,12 +14,12 @@
   },
   "dependencies": {
     "ajv": "^6.10.0",
-    "av": "^0.4.9",
     "axios": "^0.19.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "cross-env": "^5.2.0",
     "css-modules": "^0.3.0",
     "element-ui": "^2.9.1",
+    "kramed": "^0.5.6",
     "vee-validate": "^2.2.9",
     "velocity-animate": "^1.5.2",
     "vue": "^2.5.2",

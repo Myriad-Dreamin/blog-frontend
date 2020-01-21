@@ -1,14 +1,17 @@
-* {font-size: 1em;}
+* {
+    font-size: 1em;
+    margin: 0;
+    padding: 0;
+}
 
 html { height: 100%; overflow: auto; }
 
 body {
-    background-image: url('https://myriaddreamin.com:10777/images/main.jpg');
+    background-image: url('https://backend.myriaddreamin.com:23335/v1/images/main.jpg');
     background-repeat: repeat-x;
     background-size: cover;
     background-position: right;
     background-attachment:fixed;
-    margin: 0px;
     height: 100%; overflow: auto;
     z-index: -1;
 }
@@ -58,4 +61,9 @@ body {
 
 .span-width80 {
     width: 80%;
+}
+
+.placer {
+    height: 1px;
+    width: 1px;
 }
