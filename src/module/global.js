@@ -9,7 +9,7 @@ const client = new Client({
     baseURLGetter: getBackendPath,
 });
 
-window.client = client;
+// window.client = client;
 
 export {
     getBackendPath,

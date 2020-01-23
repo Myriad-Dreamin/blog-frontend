@@ -1,11 +1,14 @@
 .markdown-body {
     width: 100%;
     margin-top: 45px;
-    padding: 0px;
+    padding: 0;
+
+    font-size: 18px;
+    font-family: 'Source Han Serif CN', 'Source Han Sans CN', 'Source Han Serif SC', source-han-serif-sc, Helvetica, Tahoma, Arial, "Microsoft YaHei", '-apple-system', 'SF UI Display', 'Arial', 'PingFang SC', 'Hiragino Sans GB' , 'WenQuanYi Micro Hei', sans-serif;
 }
 
 @media (max-width: 767px) {
     .markdown-body {
-        padding: 0px;
+        padding: 0;
     }
 }

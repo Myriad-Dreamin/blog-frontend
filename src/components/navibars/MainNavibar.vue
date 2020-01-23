@@ -27,7 +27,7 @@ export default {
                     'type': 1,
                 },
                 {
-                    'linker': '/secretlove',
+                    'linker': '/rose',
                     'text': 'Marshmello',
                     'type': 0,
                 },
@@ -37,7 +37,7 @@ export default {
                     'type': 0,
                 },
                 {
-                    'linker': '/musical',
+                    'linker': '/music',
                     'text': 'Favorites',
                     'type': 0,
                 }

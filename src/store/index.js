@@ -4,21 +4,19 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 import AuthAdmin from './module/auth.js';
-import Login from './module/Login.js';
-
+// import Login from './module/Login.js';
+import Config from './module/config';
 
 Vue.use(Vuex);
 
 
 export default new Vuex.Store({
     state: {
-        authenticated: false,
-        name: '',
-        email: '',
     },
     modules: {
         AuthAdmin,
-        Login
+        // Login,
+        config: Config,
     },
     strict: true
 });

@@ -1,12 +1,9 @@
 
 
-.html_full, .body_full {
-    background-color: #fff;
+.content {
     color: #636b6f;
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
-    height: 100vh;
-    margin: 0;
 }
 
 .fullHeight {
@@ -17,6 +14,10 @@
     align-items: center;
     display: flex;
     justify-content: center;
+}
+
+.title-container {
+    height: 40vh;
 }
 
 .positionRef {
@@ -34,24 +35,62 @@
 }
 
 .title {
-    font-size: 84px;
+    font-size: 6vw;
 }
-.title > a {
+.title a {
     color: #636b6f;
     text-decoration: none;
     text-transform: uppercase;
+    float: right;
+    margin-left: 7vw;
 }
 
-.links > a {
+.links a, .links span {
     color: #636b6f;
     padding: 0 25px;
-    font-size: 13px;
-    font-weight: 600;
     letter-spacing: .1rem;
     text-decoration: none;
-    text-transform: uppercase;
 }
 
-.mBMd {
-    margin-bottom: 30px;
+.links a{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.links span{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+
+.left-box {
+    float: left;
+}
+
+.right-box {
+    float: right;
+}
+
+.x-divider {
+    margin: 20vh auto;
+    height: 60vh;
+    width: 2px;
+    background-color: #DCDFE6;
+    display: block;
+}
+
+.links {
+    padding-top: 20vh;
+}
+
+.lnk, .desc {
+    margin: 4vh 0;
+}
+
+.lnk {
+    text-align: right;
+}
+
+.desc {
+    text-align: left;
 }

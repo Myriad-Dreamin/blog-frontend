@@ -1,0 +1,20 @@
+
+
+.back-body {
+    background-image: url('https://backend.myriaddreamin.com:23335/v1/images/main.jpg');
+    background-repeat: repeat-x;
+    background-size: cover;
+    background-position: right;
+    background-attachment:fixed;
+    height: 100%; overflow: auto;
+    z-index: -1;
+}
+
+.back-wrap {
+    background-color:rgba(0, 0, 0, 0.2);
+    content: '';
+    width: 100%;
+    height: 100%; overflow: auto;
+    z-index: 1;
+}
+

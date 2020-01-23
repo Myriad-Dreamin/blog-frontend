@@ -1,0 +1,29 @@
+
+.article-title {
+    text-align: center;
+    font-size: 5vh;
+    margin: 10vh 0 10vh 0;
+}
+
+.article-crumb {
+    margin: 2vh 0;
+    font-size: 16px;
+}
+
+.article-setting-button {
+    float: right;
+}
+
+.article-setting-button:hover {
+    transition: all 0.1s linear;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.article-wrap {
+    background-color: rgba(200, 200, 200, 0.5);
+}
+
+div.black-divider .el-divider {
+    background-color: rgba(80, 84, 94, 0.51);
+}
+
