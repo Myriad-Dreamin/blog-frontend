@@ -8,7 +8,7 @@
         </div>
         <div class="title-container" style="position: absolute">
             <div class="content title" style="margin-top: 40vh;">
-                <router-link to="/articles"><span style="color: white">Dreamin's </span><span>Blog</span></router-link>
+                <router-link :to="articlesIndices.list"><span style="color: white">Dreamin's </span><span>Blog</span></router-link>
             </div>
         </div>
         <div class="right-box" style="width: 60%">
@@ -25,13 +25,13 @@
                             <div class="content">
                                 <div class="links">
                                     <div class="lnk">
-                                        <router-link to="/articles">Articles</router-link>
+                                        <router-link :to="articlesIndices.list">Articles</router-link>
                                     </div>
                                     <div class="lnk">
                                         <router-link to="/picture">Picture</router-link>
                                     </div>
                                     <div class="lnk">
-                                        <router-link to="/music">Music</router-link>
+                                        <router-link to="/musics">Music</router-link>
                                     </div>
                                     <div class="lnk">
                                         <a href="https://github.com/Myriad-Dreamin">Code</a>
@@ -75,11 +75,15 @@
 </template>
 
 <script>
+    import articlesIndices from "@/router/articles";
+
+
     export default {
         name: 'Main',
         data() {
             return {
                 msg: 'Myriad Dreamin Blog',
+                articlesIndices,
             };
         }
     };

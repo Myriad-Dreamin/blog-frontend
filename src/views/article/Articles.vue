@@ -32,7 +32,7 @@
     export default {
         name: 'Articles',
         mounted() {
-
+            this.articles = this.articles || [];
             this.axios.get(getBackendPath() + '/v1/article-list?page=1&page_size=1000').then((response) => {
                 if (response.data.code === 0) {
                     this.articles = response.data.articles.reverse();
@@ -44,15 +44,7 @@
         data() {
             return {
                 msg: 'List Articles',
-                articles: [
-                    {
-                        'title': '',
-                        'id': 0,
-                        'category': '',
-                        'published_at': '',
-                        'intro': '',
-                    }
-                ]
+                articles: []
             };
         },
         methods: {

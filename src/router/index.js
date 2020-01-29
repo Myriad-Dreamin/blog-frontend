@@ -2,82 +2,38 @@
 
 import Vue from 'vue';
 import Router from 'vue-router';
-import Main from '@/views/Main';
-
-import Articles from '@/views/article/Articles';
-import Article from '@/views/article/Article';
-
-import Musicals from '@/views/musical/MusicIndex';
-
-import Register from '@/views/auth/Register';
-import Login from '@/views/auth/Login';
-import BackStage from '@/views/backstage/BackStage';
-
 
 import store from '@/store/index.js';
 import {tokenState} from "@/store/token/token";
 
+import mainIndex from "@/router/main";
+import articlesIndices from "@/router/articles";
+import authIndices from "@/router/auth";
+
+import Musics from '@/views/musical/Musics';
+
 Vue.use(Router);
 
-const router = new Router({
-    routes: [
-        {
-            path: '/',
-            name: 'Main',
-            component: Main,
-            meta: {
-                requireAuth: false,
-            }
-        },
-        {
-            path: '/articles',
-            name: 'Articles',
-            component: Articles,
-            meta: {
-                requireAuth: false,
-            }
-        },
-        {
-            path: '/articles/:id',
-            name: 'Article',
-            component: Article,
-            meta: {
-                requireAuth: false,
-            }
-        },
-        {
-            path: '/musical',
-            name: 'Musical',
-            component: Musicals,
-            meta: {
-                requireAuth: false,
-            }
-        },
-        {
-            path: '/register',
-            name: 'Register',
-            component: Register,
-            meta: {
-                requireAuth: false,
-            }
-        },
-        {
-            path: '/login',
-            name: 'Login',
-            component: Login,
-            meta: {
-                requireAuth: false,
-            }
-        },
-        {
-            path: '/backstage',
-            name: 'BackStage',
-            component: BackStage,
-            meta: {
-                requireAuth: true,
-            }
+const routes = [
+    mainIndex,
+    ...articlesIndices,
+    ...authIndices,
+    {
+        path: '/musics',
+        name: 'Music',
+        component: Musics,
+        meta: {
+            requireAuth: false,
         }
-    ]
+    },
+];
+
+// for (let index of routes) {
+//     index.type = 0;
+// }
+
+const router = new Router({
+    routes,
 });
 
 router.beforeEach((to, from, next) => {

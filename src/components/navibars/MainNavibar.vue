@@ -6,6 +6,7 @@
 
 <script>
 import Navibar from './Navibar.vue';
+import {articlesIndices} from "@/router/articles";
 export default {
     name: 'MainNavibar',
     data () {
@@ -17,7 +18,7 @@ export default {
                     'type': 0,
                 },
                 {
-                    'linker': '/articles',
+                    'linker': articlesIndices.list.path,
                     'text': 'Article',
                     'type': 0,
                 },
@@ -37,7 +38,7 @@ export default {
                     'type': 0,
                 },
                 {
-                    'linker': '/music',
+                    'linker': '/musics',
                     'text': 'Favorites',
                     'type': 0,
                 }

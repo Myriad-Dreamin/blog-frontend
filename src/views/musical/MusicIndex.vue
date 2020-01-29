@@ -46,9 +46,9 @@ import {getBackendPath} from "@/module/global";
 export default {
     name: 'Articles',
     mounted() {
-        this.axios.get(getBackendPath() + '/v1/musical').then((response) =>  {
-            this.recommend_list = response.data;
-        });
+        // this.axios.get(getBackendPath() + '/v1/musical').then((response) =>  {
+        //     this.recommend_list = response.data;
+        // });
     },
     data () {
         return {

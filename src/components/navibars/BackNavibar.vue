@@ -30,7 +30,7 @@ export default {
                     'type': 1,
                 },
                 {
-                    'linker': '/secretlove',
+                    'linker': '/rose',
                     'text': 'Marshmello',
                     'type': 0,
                 },
