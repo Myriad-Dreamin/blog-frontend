@@ -2,7 +2,7 @@
 @import "../purewhite/index_box.css";
 
 .index_box {
-    width: 80%;
+    /*width: 80%;*/
     margin: 25px 10% 25px 10%;
     top: 0;
 }

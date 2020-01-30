@@ -41,6 +41,7 @@
 <script>
     import MainNavibar from '@/components/navibars/MainNavibar.vue';
     import {tokenState} from "@/store/token/token";
+    import {client} from '@/module/global';
 export default {
     mounted() {
         console.log(this.axios);
@@ -53,23 +54,27 @@ export default {
     },
 
     methods: {
-        async login() {
+        login() {
 
-            let response = await this.axios.post('/v1/login', {
-                'nick_name': this.name,
-                'password': this.password,
-            });
-            if (response.status !== 200 || response.data.code !== 0) {
-                console.log(response);
-                return;
-            }
-            tokenState.set(response.data.token);
-            console.log(response.data['refresh_token']);
-            console.log(response.data['name']);
-            console.log(response.data['nick_name']);
-            console.log(response.data['phone']);
-            console.log(response.data['identity']);
-            console.log(response);
+            client.auth.login({
+                nick_name: this.name,
+                password: this.password,
+            }).then((data) => {
+                tokenState.set(data.token);
+                console.log(data['refresh_token']);
+                console.log(data['name']);
+                console.log(data['nick_name']);
+                console.log(data['phone']);
+                console.log(data['identity']);
+                console.log(data);
+            }).catch(
+                (err) => {
+                    this.$notify.error({
+                        title: '登录失败(' + err.name + ')',
+                        message: 'message: ' + err.message,
+                    });
+                }
+            );
         }
     },
 

@@ -29,9 +29,13 @@ window.MathJax.Hub.Config = window.MathJax.Hub.Config || function () {
 axios.interceptors.request.use(authInterceptor.onFullFilled, authInterceptor.onRejected);
 
 
+const veeValidateConfig = {
+    errorBagName: 'errorBags', // change if property conflicts.
+    fieldsBagName: 'fieldBags',
+};
 Vue.use(VueAxios, axios);
 Vue.use(ElementUI);
-Vue.use(VeeValidate);
+Vue.use(VeeValidate, veeValidateConfig);
 
 Vue.config.productionTip = false;
 

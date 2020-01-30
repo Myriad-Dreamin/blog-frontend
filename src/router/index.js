@@ -7,8 +7,9 @@ import store from '@/store/index.js';
 import {tokenState} from "@/store/token/token";
 
 import mainIndex from "@/router/main";
-import articlesIndices from "@/router/articles";
+import articlesIndices from "@/router/article";
 import authIndices from "@/router/auth";
+import musicsIndices from "@/router/musics";
 
 // import Musics from '@/views/musical/Musics';
 
@@ -17,15 +18,8 @@ Vue.use(Router);
 const routes = [
     mainIndex,
     ...articlesIndices,
+    ...musicsIndices,
     ...authIndices,
-    {
-        path: '/musics',
-        name: 'Music',
-        component: () => import('@/views/musical/Musics'),
-        meta: {
-            requireAuth: false,
-        }
-    },
 ];
 
 // for (let index of routes) {

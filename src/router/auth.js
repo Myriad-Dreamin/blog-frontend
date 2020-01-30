@@ -19,22 +19,13 @@ const login = {
         requireAuth: false,
     }
 };
-const backstage = {
-    path: '/backstage',
-    name: 'BackStage',
-    component: () => import('@/views/backstage/BackStage'),
-    meta: {
-        requireAuth: true,
-    }
-};
 
 const authIndices = [
-    register, login, backstage,
+    register, login,
 ];
 
 authIndices.register = register;
 authIndices.login = login;
-authIndices.backstage = backstage;
 
 export default authIndices;
 export {authIndices};

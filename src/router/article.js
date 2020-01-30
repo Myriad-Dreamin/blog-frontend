@@ -1,8 +1,4 @@
 
-// import Articles from '@/views/article/Articles';
-// import Article from '@/views/article/Article';
-
-
 
 const list = {
     path: '/articles',
@@ -14,7 +10,7 @@ const list = {
 };
 
 const inspect = {
-    path: '/articles/:id',
+    path: '/article/:id',
     name: 'Article',
     component: () => import('@/views/article/Article'),
     meta: {
@@ -22,13 +18,35 @@ const inspect = {
     }
 };
 
+
+const put = {
+    path: '/backstage/put-article',
+    name: 'PutArticle',
+    component: () => import('@/views/article/PutArticle'),
+    meta: {
+        requireAuth: true,
+    }
+};
+
+const post = {
+    path: '/backstage/post-article',
+    name: 'PostArticle',
+    component: () => import('@/views/article/PostArticle'),
+    meta: {
+        requireAuth: true,
+    }
+};
+
+
 const articlesIndices = [
-    list,
+    list, post, put,
     inspect,
 ];
 
 articlesIndices.list = list;
 articlesIndices.inspect = inspect;
+articlesIndices.post = post;
+articlesIndices.put = put;
 
 
 export default articlesIndices;

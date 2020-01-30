@@ -75,7 +75,7 @@
 </template>
 
 <script>
-    import articlesIndices from "@/router/articles";
+    import articlesIndices from "@/router/article";
 
 
     export default {

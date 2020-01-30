@@ -3,12 +3,13 @@
 <template>
     <div>
         <navi-bar v-bind:refers="refers"></navi-bar>
-        <div>qwq</div>
     </div>
 </template>
 
 <script>
 import Navibar from './Navibar.vue';
+import {articlesIndices} from "@/router/article";
+import {musicsIndices} from "@/router/musics";
 export default {
     name: 'BackNavibar',
     data () {
@@ -20,45 +21,25 @@ export default {
                     'type': 0,
                 },
                 {
-                    'linker': '/articles',
-                    'text': 'Article',
+                    'linker': articlesIndices.post.path,
+                    'text': 'PostArticle',
                     'type': 0,
                 },
                 {
-                    'linker': 'https://github.com/Myriad-Dreamin',
-                    'text': 'Code',
-                    'type': 1,
-                },
-                {
-                    'linker': '/rose',
-                    'text': 'Marshmello',
+                    'linker': articlesIndices.put.path,
+                    'text': 'PutArticle',
                     'type': 0,
                 },
                 {
-                    'linker': '/chocolate',
-                    'text': 'Chocolate',
+                    'linker': musicsIndices.post.path,
+                    'text': 'PostMusic',
                     'type': 0,
                 },
                 {
-                    'linker': '/musical',
-                    'text': 'Favorites',
+                    'linker': musicsIndices.put.path,
+                    'text': 'PutMusic',
                     'type': 0,
                 },
-                {
-                    'linker': '/mass/article',
-                    'text': 'Mass Article',
-                    'type': 0,
-                },
-                {
-                    'linker': '/mass/music',
-                    'text': 'Mass Music',
-                    'type': 0,
-                },
-                {
-                    'linker': '/mass/picture',
-                    'text': 'Mass Picture',
-                    'type': 0,
-                }
             ]
         };
     },

@@ -6,7 +6,7 @@
 
 <script>
 import Navibar from './Navibar.vue';
-import {articlesIndices} from "@/router/articles";
+import {articlesIndices} from "@/router/article";
 export default {
     name: 'MainNavibar',
     data () {

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {tokenState} from "@/store/token/token";
-import {getBackendPath} from "@/module/global";
 
 const BaseURLPolicy = {
     AlwaysGet: 1,
@@ -11,6 +10,7 @@ let authInterceptor = {
     onFullFilled(config) {
         if (tokenState.get()) {
             config.headers.Authorization = 'Bearer ' + tokenState.get();
+            console.log("getting", tokenState.get());
         }
         return config;
     },
@@ -24,6 +24,13 @@ function getURL(g) {
         return g
     }
     return g();
+}
+
+class BadParameterError extends Error {
+    constructor(msg) {
+        super();
+        this.message = msg;
+    }
 }
 
 class BadStatusError extends Error {
@@ -42,7 +49,8 @@ class BadServeError extends Error {
     }
 }
 
-class ArticleClient {
+class ResolveClient {
+
     constructor(client) {
         this.client = client;
     }
@@ -59,6 +67,12 @@ class ArticleClient {
 
     _procOrData(response) {
         return this._proc(response) || response.data;
+    }
+}
+
+class ArticleClient extends ResolveClient {
+    constructor(client) {
+        super(client);
     }
 
     async post({title, intro, category, publishedAt}) {
@@ -93,6 +107,29 @@ class ArticleClient {
     }
 }
 
+
+class AuthClient extends ResolveClient {
+    constructor(client) {
+        super(client);
+    }
+
+    async login({nick_name, password}) {
+        if (!nick_name) {
+            return Promise.reject(new BadParameterError('nick name is null'));
+        }
+        if (!password) {
+            return Promise.reject(new BadParameterError('password is required'));
+        }
+        let response = await this.client.wire.post('/v1/login', {
+            'nick_name': nick_name,
+            'password': password,
+        });
+        console.log(response);
+        return this._procOrData(response);
+    }
+}
+
+
 class Client {
     constructor({baseURLGetter, policies}) {
         // todo
@@ -104,7 +141,9 @@ class Client {
         });
         this.wire.interceptors.request.use(authInterceptor.onFullFilled, authInterceptor.onRejected);
         this.article = new ArticleClient(this);
+        this.auth = new AuthClient(this);
     }
+
 
 }
 
