@@ -1,9 +1,9 @@
-import Main from '@/views/Main';
+// import Main from ;
 
 const mainIndex = {
     path: '/',
     name: 'Main',
-    component: Main,
+    component: () => import('@/views/Main'),
     meta: {
         requireAuth: false,
     }

@@ -10,7 +10,7 @@ import mainIndex from "@/router/main";
 import articlesIndices from "@/router/articles";
 import authIndices from "@/router/auth";
 
-import Musics from '@/views/musical/Musics';
+// import Musics from '@/views/musical/Musics';
 
 Vue.use(Router);
 
@@ -21,7 +21,7 @@ const routes = [
     {
         path: '/musics',
         name: 'Music',
-        component: Musics,
+        component: () => import('@/views/musical/Musics'),
         meta: {
             requireAuth: false,
         }

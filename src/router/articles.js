@@ -1,13 +1,13 @@
 
-import Articles from '@/views/article/Articles';
-import Article from '@/views/article/Article';
+// import Articles from '@/views/article/Articles';
+// import Article from '@/views/article/Article';
 
 
 
 const list = {
     path: '/articles',
     name: 'Articles',
-    component: Articles,
+    component: () => import('@/views/article/Articles'),
     meta: {
         requireAuth: false,
     }
@@ -16,7 +16,7 @@ const list = {
 const inspect = {
     path: '/articles/:id',
     name: 'Article',
-    component: Article,
+    component: () => import('@/views/article/Article'),
     meta: {
         requireAuth: false,
     }
