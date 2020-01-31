@@ -42,6 +42,7 @@
     import MainNavibar from '@/components/navibars/MainNavibar.vue';
     import {tokenState} from "@/store/token/token";
     import {client} from '@/module/global';
+    import {backStageIndices} from "@/router/back-stage";
 export default {
     mounted() {
         console.log(this.axios);
@@ -67,6 +68,8 @@ export default {
                 console.log(data['phone']);
                 console.log(data['identity']);
                 console.log(data);
+
+                this.$router.push(backStageIndices.backstage);
             }).catch(
                 (err) => {
                     this.$notify.error({

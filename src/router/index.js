@@ -10,6 +10,7 @@ import mainIndex from "@/router/main";
 import articlesIndices from "@/router/article";
 import authIndices from "@/router/auth";
 import musicsIndices from "@/router/musics";
+import {backStageIndices} from "@/router/back-stage";
 
 // import Musics from '@/views/musical/Musics';
 
@@ -17,6 +18,7 @@ Vue.use(Router);
 
 const routes = [
     mainIndex,
+    ...backStageIndices,
     ...articlesIndices,
     ...musicsIndices,
     ...authIndices,

@@ -4,7 +4,7 @@
     <div class="back-body">
         <div class="back-wrap">
             <navi-bar></navi-bar>
-            <div class="index_box" style="padding: 30px 10vh">
+            <div class="index_box">
                 <div class="title"><p>Post a new article</p></div>
                 <el-form label-position="right" label-width="9em" :model="article">
                     <el-form-item label="Title">
@@ -19,16 +19,16 @@
                     <el-form-item label="Publish At">
                         <el-col :span="12">
                             <el-date-picker type="date" placeholder="Select Date" v-model="article.published_at"
-                                            style="width: 100%;"></el-date-picker>
+                                            class="el-date-picker"></el-date-picker>
                         </el-col>
-                        <el-col class="line" :span="1" style="text-align: center">-</el-col>
+                        <el-col class="date-line" :span="1">-</el-col>
                         <el-col :span="11">
                             <el-time-picker placeholder="Select Time" v-model="article.published_at"
-                                            style="width: 100%;"></el-time-picker>
+                                            class="el-time-picker"></el-time-picker>
                         </el-col>
                     </el-form-item>
                 </el-form>
-                <div style="text-align: center; ">
+                <div class="button-container">
                     <el-button v-on:click="submit" style="margin: 0 auto; width: 30vw" type="primary">Submit</el-button>
                 </div>
             </div>
@@ -91,7 +91,16 @@
     .index_box {
         /*width: 80%;*/
         margin: 25px 10% 25px 10%;
+        padding: 30px 10vh;
         top: 0;
+    }
+
+    .el-date-picker, .el-time-picker {
+        width: 100%;
+    }
+
+    .date-line, .button-container {
+        text-align: center;
     }
 </style>
 

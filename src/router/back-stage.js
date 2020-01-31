@@ -1,4 +1,3 @@
-import backStageIndices from "@/router/auth";
 
 const backstage = {
     path: '/backstage',
