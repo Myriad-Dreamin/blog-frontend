@@ -9,8 +9,8 @@
             <el-button v-on:click="changeTransparentBackgroundState"></el-button>
         </el-drawer>
 
-        <div :class="viewClassBody">
-            <div :class="viewClassWrap">
+        <div :class="articleBackBody">
+            <div :class="articleWrapClass">
                 <div style="min-height: 60vh">
                     <el-row v-show="isShow">
                         <el-col :span="3">
@@ -57,15 +57,15 @@
                 </div>
             </div>
         </div>
-        <div v-show="isShow" class="back-body">
-            <div :class="viewClassWrapColor" style="height: 40vh">
+        <div class="image-body">
+            <div :class="windowWrapClass" class="back-window">
 
             </div>
         </div>
 
-        <div :class="viewClassBody">
-            <div :class="viewClassWrap">
-                <el-row v-show="isShow" style="box-shadow: 0 0 3px #777777;">
+        <div :class="articleBackBody">
+            <div :class="articleWrapClass">
+                <el-row v-show="isShow">
                     <el-col :span="2">
                         <div class="placer"></div>
                     </el-col>
@@ -86,8 +86,8 @@
                 </el-row>
             </div>
         </div>
-        <div v-show="isShow" class="back-body">
-            <div :class="viewClassWrapColor" style="height: 40vh">
+        <div :class="articleBackBody">
+            <div :class="articleWrapClass" class="back-footer">
 
             </div>
         </div>
@@ -125,22 +125,18 @@
             };
         },
         computed: {
-            viewClassBody() {
-                console.log(this.$store.state.config.transparentBackground);
-                return this.$store.state.config.transparentBackground ? "back-body" : ""
+            articleBackBody() {
+                return this.$store.state.config.transparentBackground ? "image-body" : "pure-body"
             },
-            viewClassWrap() {
-                console.log(this.$store.state.config.transparentBackground);
+            articleWrapClass() {
                 return this.$store.state.config.transparentBackground ? "article-wrap" : ""
             },
-            viewClassWrapColor() {
-                console.log(this.$store.state.config.transparentBackground);
-                return this.$store.state.config.transparentBackground ? "article-wrap" : "back-wrap"
+            windowWrapClass() {
+                return this.$store.state.config.transparentBackground ? "no-wrap" : "image-wrap"
             },
             viewDividerBody() {
-                console.log(this.$store.state.config.transparentBackground);
                 return this.$store.state.config.transparentBackground ? "black-divider" : ""
-            }
+            },
         },
         methods: {
             linkToArticle(articleId) {
@@ -153,7 +149,6 @@
 
             changeTransparentBackgroundState() {
                 this.$store.commit(FLIP_TRANSPARENT_BACKGROUND_STATE);
-                console.log(this.$store.state.config.transparentBackground);
             },
             async load() {
                 let data = await client.article.get(this.$route.params.id);
@@ -163,7 +158,7 @@
                 this.$set(this.article, 'content', mdParser(data));
 
                 this.isShow = true;
-                MathJaxRender.rerender();
+                MathJaxRender.render();
             }
         },
         components: {
@@ -177,4 +172,16 @@
 <style scoped src="../../assets/css/articles/article_header_box.css"></style>
 <style scoped src="../../assets/css/articles/markdown.css"></style>
 <style scoped src="../../assets/css/background.css"></style>
+<style src="../../assets/css/prism-one-dark.css"></style>
 
+<style scoped>
+    .back-window {
+        min-height: 40vh;
+    }
+    .back-footer {
+        min-height: 10vh;
+    }
+    .pure-body {
+        /*box-shadow: 0 0 3px #777777;*/
+    }
+</style>

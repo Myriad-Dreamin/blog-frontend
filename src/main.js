@@ -13,21 +13,21 @@ import 'element-ui/lib/theme-chalk/index.css';
 
 import store from './store/index.js';
 import router from './router';
-import {tokenState} from "@/store/token/token";
 import {getBackendPath} from "@/module/global";
 import {authInterceptor} from "@/module/backend";
+import {MathJaxRender} from "@/plugin/mathjax";
+import {PrismRender} from "@/plugin/prism";
+
 
 axios.defaults.baseURL = getBackendPath();
-
-
-window.MathJax = window.MathJax || {};
-window.MathJax.Hub = window.MathJax.Hub || {};
-window.MathJax.Hub.Config = window.MathJax.Hub.Config || function () {
-    console.log("plugin of MathJax unloaded, check it!");
-};
-
 axios.interceptors.request.use(authInterceptor.onFullFilled, authInterceptor.onRejected);
 
+for (let plugin of [
+    MathJaxRender,
+    PrismRender,
+]) {
+    plugin.init();
+}
 
 const veeValidateConfig = {
     errorBagName: 'errorBags', // change if property conflicts.
@@ -39,10 +39,10 @@ Vue.use(VeeValidate, veeValidateConfig);
 
 Vue.config.productionTip = false;
 
-// Vue.directive('highlight', function () {
-//     let blocks = document.querySelectorAll('pre code');
-//     [].forEach.call(blocks, window.hljs.highlightBlock);
-// });
+Vue.directive('highlight', function () {
+    let blocks = document.querySelectorAll('pre code');
+    [].forEach.call(blocks, PrismRender.render);
+});
 
 /* eslint-disable no-new */
 new Vue({
