@@ -11,7 +11,9 @@
                         <a v-on:click="linkToArticle(article.id)">{{ article.title }}</a>
                     </div>
                     <div class="tagbox">
-                        <a class="category">Category: {{ article.category }}</a>
+                        <a class="category">Category: {{ article.category }}
+                            <span style="margin: 0 1em;"></span>
+                            Clicked: {{ article.got_times }}</a>
                     </div>
                     <div class="tagbox">
                         <a class="timetag">Publish at: {{ article.published_at }}</a>

@@ -119,6 +119,7 @@
                     updated_at: '',
                     intro: '',
                     content: '',
+                    got_times: 0,
                 },
                 isShow: false,
                 viewSetting: false,
