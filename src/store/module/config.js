@@ -3,7 +3,7 @@ import * as types from '@/store/MutationTypes';
 
 export default {
     state: {
-        transparentBackground: window.localStorage.getItem('transparent-background') || false,
+        transparentBackground: (window.localStorage.getItem('transparent-background') || "false") !== "false",
     },
     mutations: {
         [types.FLIP_TRANSPARENT_BACKGROUND_STATE] (state) {
