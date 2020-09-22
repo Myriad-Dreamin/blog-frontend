@@ -95,9 +95,10 @@ def find_all_el_html_tags(path, omitting_dirs):
     return el_html_tags
 
 
-def el_import_template(elements):
+def el_import_template(elements, el_html_tags, async_components):
     el_template = """/* generated file, DO NOT EDIT!! */
 import {{{import_statements}}} from 'element-ui';
+{{import_css_statements}}
 
 function UseElElements(Vue) {
     {{use_statements}}
@@ -106,11 +107,21 @@ function UseElElements(Vue) {
 export default UseElElements;
 
 """
-    elements = sorted(elements)
-    import_statements_list = map(lambda s: f'Vue.use({s});', elements)
+    if async_components is None:
+        async_components = set()
+
+    def import_component_statement(cmpnt):
+        if cmpnt in async_components:
+            return f"Vue.component('el-{async_components[cmpnt]}', () => import(/* webpackChunkName: 'el-{async_components[cmpnt]}' */ 'element-ui/lib/{async_components[cmpnt]}'));"
+        else:
+            return f'Vue.use({cmpnt});'
+
+    elements = list(sorted(elements))
+    el_html_tags = list(sorted(el_html_tags))
     return el_template.\
-        replace('{{import_statements}}', ', '.join(elements)).\
-        replace('{{use_statements}}', '\n    '.join(import_statements_list))
+        replace('{{import_statements}}', ', '.join(filter(lambda s: s not in async_components, elements))).\
+        replace('{{import_css_statements}}', '\n'.join(map(lambda s: f"import 'element-ui/lib/theme-chalk/{s[3:]}.css';", el_html_tags))).\
+        replace('{{use_statements}}', '\n    '.join(map(import_component_statement, elements)))
 
 
 if __name__ == '__main__':
@@ -119,14 +130,17 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--src', type=str, default='.', help='src path')
-    parser.add_argument('--out', type=str, default='src/plugin/element_ui_generated.js', 'path of generated file to output')
+    parser.add_argument('--out', type=str, default='src/plugin/element_ui_generated.js', help='path of generated file to output')
     
     args = parser.parse_args()
 
     omitting_dirs = set(map(lambda p: os.path.join('.', p), ['node_modules', 'dist', 'build', 'config']))
 
-    el_html_tags = find_all_el_html_tags(args.src, omitting_dirs)
+    el_html_tags = list(find_all_el_html_tags(args.src, omitting_dirs))
+
+    async_components = {'DatePicker': 'date-picker', 'TimePicker': 'time-picker'}
+
     
-    generated_file = el_import_template(ConvertStyle(map(lambda s: s[3:], el_html_tags)).From(MiddleSnake).To(BigCamel).Do())
+    generated_file = el_import_template(ConvertStyle(map(lambda s: s[3:], el_html_tags)).From(MiddleSnake).To(BigCamel).Do(), el_html_tags, async_components)
     print(generated_file)
     open(args.out, 'w', encoding=encoding).write(generated_file)
