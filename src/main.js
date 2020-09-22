@@ -7,16 +7,17 @@ import App from './App';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import VeeValidate from 'vee-validate';
+import {ElementUIPlugin} from '@/plugin/element_ui';
 
-import ElementUI from 'element-ui';
+
 import 'element-ui/lib/theme-chalk/index.css';
 
 import store from './store/index.js';
 import router from './router';
-import {getBackendPath} from "@/module/global";
-import {authInterceptor} from "@/module/backend";
-import {MathJaxRender} from "@/plugin/mathjax";
-import {PrismRender} from "@/plugin/prism";
+import {getBackendPath} from '@/module/global';
+import {authInterceptor} from '@/module/backend';
+import {MathJaxRender} from '@/plugin/mathjax';
+import {PrismRender} from '@/plugin/prism';
 
 
 axios.defaults.baseURL = getBackendPath();
@@ -34,7 +35,7 @@ const veeValidateConfig = {
     fieldsBagName: 'fieldBags',
 };
 Vue.use(VueAxios, axios);
-Vue.use(ElementUI);
+ElementUIPlugin.Use(Vue);
 Vue.use(VeeValidate, veeValidateConfig);
 
 Vue.config.productionTip = false;
